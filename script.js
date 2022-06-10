@@ -1,30 +1,11 @@
-function addPageHome(index,movies){
+//Dom M
+function addPageHome(movies){
     const pageHome = document.getElementById('pageHome')
     let div = document.createElement('div')
     let div1 = document.createElement('div')
     let div2 = document.createElement('div')
     let image = document.createElement('img')
-    let row = document.createElement('tr')
-    let cell = document.createElement('th')
-    // cell.setAttribute('scope','row')
-    // cell.innerHTML = index
-    // row.appendChild(cell)
-    // cell = document.createElement('td')
-    // cell.innerHTML = `${movies.title} ` //${movies.surname}
-    // row.appendChild(cell)
-    // cell = document.createElement('td')
-    // cell.appendChild(div)
-    // div.appendChild(image)
-    // image.setAttribute('src',movies.image_url)
-    // image.classList.add('img-thumbnail')
-    // image.style.width = '150px'
-    // row.appendChild(cell)
-    // cell = document.createElement('td')
-    // // cell.innerHTML = movies.gender
-    // row.appendChild(cell)
-    // pageHome.appendChild(row)
 
-    // pageHome.append(div)
     div = document.createElement('div')
     div.classList.add('card')
     div.classList.add('col-xl-4')
@@ -37,7 +18,7 @@ function addPageHome(index,movies){
     div1.classList.add('m-3')
 
     div1.appendChild(image)
-    image.setAttribute('src',`${movies.images.jpg.image_url}`)//
+    image.setAttribute('src',`${movies.images.jpg.image_url}`)
     image.classList.add('h-auto')
     image.classList.add('w-auto')
     
@@ -48,6 +29,13 @@ function addPageHome(index,movies){
     div2.classList.add('text-center')
     div2.innerText = `${movies.title}`
     pageHome.appendChild(div)
+
+    div1.addEventListener('dblclick',function() {
+        let cf = confirm(`ต้องการถูกใจ ${movies.title} หรือไม่`)
+        if(cf){
+            
+        }
+    })
 
     // div.classList.add('card')
     // div.classList.add('col-xl-4')
@@ -68,6 +56,7 @@ function addPageHome(index,movies){
     // innerHTML = `${movies.title}`
 }
 
+//Add
 function showAllMovies(){
     fetch('https://api.jikan.moe/v4/anime?page=2')
     .then(response => {
@@ -78,20 +67,56 @@ function showAllMovies(){
 }
 
 function addMovieList(movieList){
-    let counter = 1
     const pageHome = document.getElementById('pageHome')
     pageHome.innerHTML=''
     for(movie of movieList.data){
-        addPageHome(counter++,movie)
+        addPageHome(movie)
     }
 }
 
+//Search
+function searchAnime(input){
+    fetch(`https://api.jikan.moe/v4/anime?q=${input}&sfw`)
+    .then(response => {
+        return response.json()
+    }).then(data => {
+        addSearchMovie(data)
+    })
+}
+
+function addSearchMovie(movieSearch){
+    const pageSearch = document.getElementById('pageSearch')
+    pageSearch.innerHTML=''
+    for(movieS of movieSearch.data){
+        addPageHome(movieS)
+    }
+}
+
+// function onLoad(){
+//     hideAll()
+// }
+
 var pHome = document.getElementById('pageHome')
+// var pSearch = document.getElementById('pageSearch')
+
+// function hideAll(){
+//     pHome.style.display = 'none'
+// }
 
 document.getElementById('home').addEventListener('click',(event) => {
+    // hideAll()
+    pHome.style.display = 'flex'
     showAllMovies()
+})
+
+document.getElementById('searchButton').addEventListener('click',(event) => {
+    // const pageHome = document.getElementById('pageHome')
+    // pageHome.innerHTML=''
+    let input = document.getElementById('searchBar').value
+    searchAnime(input)
 })
 
 window.addEventListener('load',function(){
     showAllMovies()
 })
+
