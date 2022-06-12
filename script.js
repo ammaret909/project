@@ -11,6 +11,7 @@ function addPageHome(movies){
     div.classList.add('col-xl-4')
     div.classList.add('col-lg-6')
     div.classList.add('col-md-12')
+    div.classList.add('light')
 
     div.appendChild(div1)
     div1.classList.add('d-flex')
@@ -26,6 +27,7 @@ function addPageHome(movies){
     div2.classList.add('d-flex')
     div2.classList.add('justify-content-center')
     div2.classList.add('text-center')
+    div2.classList.add('text-white')
     div2.innerText = `${movies.title}`
     pageHome.appendChild(div)
 
@@ -95,6 +97,7 @@ function addPageLike(moviesLike){
     div.classList.add('col-xl-4')
     div.classList.add('col-lg-6')
     div.classList.add('col-md-12')
+    div.classList.add('light')
 
     div.appendChild(divImg)
     divImg.classList.add('d-flex')
@@ -118,6 +121,7 @@ function addPageLike(moviesLike){
     divIcon.classList.add('justify-content-center')
     divIcon.classList.add('align-items-center')
     divIcon.classList.add('col-3')
+    divIcon.classList.add('text-white')
 
     div3.appendChild(divDetails)
     divDetails.classList.add('col-3')
@@ -126,7 +130,7 @@ function addPageLike(moviesLike){
     divDetails.appendChild(button)
     button.classList.add('btn')
     button.classList.add('bg-oreng')
-    button.classList.add('text-back')
+    button.classList.add('text-white')
     button.setAttribute('type','submit')
     button.setAttribute('id','details')
     button.innerText='Details'
@@ -141,7 +145,8 @@ function addPageLike(moviesLike){
     divDelete.appendChild(button1)
     button1.classList.add('btn')
     button1.classList.add('bg-oreng')
-    button1.classList.add('text-back')
+    // button1.classList.add('text-back')
+    button1.classList.add('text-white')
     button1.setAttribute('type','submit')
     button1.setAttribute('id','delete')
     button1.innerText='Delete'
@@ -157,6 +162,7 @@ function addPageLike(moviesLike){
     divName.classList.add('d-flex')
     divName.classList.add('justify-content-center')
     divName.classList.add('text-center')
+    divName.classList.add('text-white')
     divName.innerText = `${moviesLike.title}`
     pageLike.appendChild(div)
 }
