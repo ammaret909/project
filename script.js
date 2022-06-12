@@ -33,29 +33,11 @@ function addPageHome(movies){
     div1.addEventListener('dblclick',function() {
         let cf = confirm(`ต้องการถูกใจ ${movies.title} หรือไม่`)
         if(cf){
-            hideAll()
             addToData(movies)
+            hideAll()
             showAllMoviesLike()
         }
     })
-
-    // div.classList.add('card')
-    // div.classList.add('col-xl-4')
-    // div.classList.add('col-lg-6')
-    // div.classList.add('col-md-12')
-    // div = document.createElement('div')
-    // div.classList.add('d-flex')
-    // div.classList.add('justify-content-center')
-    // div.classList.add('m-3')
-    // div.appendChild(image)
-    // image.classList.add('h-100')
-    // image.classList.add('w-75')
-    // image.setAttribute('src',`${movies.image_url}`)
-    // div = document.createElement('div')
-    // div.classList.add('pb-0')
-    // div.classList.add('d-flex')
-    // div.classList.add('justify-content-center')
-    // innerHTML = `${movies.title}`
 }
 
 //Add
@@ -149,6 +131,9 @@ function addPageLike(moviesLike){
     button.setAttribute('type','submit')
     button.setAttribute('id','details')
     button.innerText='Details'
+    button.addEventListener('click', function () {
+        showDetailFlex(moviesLike)
+    })
 
     div3.appendChild(divDelete)
     divDelete.classList.add('col-3')
@@ -161,6 +146,13 @@ function addPageLike(moviesLike){
     button1.setAttribute('type','submit')
     button1.setAttribute('id','delete')
     button1.innerText='Delete'
+    button1.addEventListener('click', function (e) {
+        e.stopPropagation()
+        let text = `Delete ${moviesLike.id}`;
+        if (confirm(text)) {
+            deleteMovieLike(student.id)
+        }
+    })
 
     div.appendChild(divName)
     divName.classList.add('d-flex')
@@ -226,6 +218,29 @@ function addMovieLike(movieLink){
     }
 }
 
+function detailShow(detailData) {
+    console.log(detailData)
+    let image_urlShow = document.getElementById('image_url')
+    image_urlShow.setAttribute('src', detailData.images_url)
+    let titleShow = document.getElementById('title')
+    titleShow.innerHTML = detailData.title
+    let scoreShow = document.getElementById('score')
+    scoreShow.innerHTML = detailData.score
+    let episodesShow = document.getElementById('episodes')
+    episodesShow.innerHTML = detailData.episodes
+    let statusShow = document.getElementById('status')
+    statusShow.innerHTML = detailData.status
+    let ratedShow = document.getElementById('rated')
+    ratedShow.innerHTML = detailData.rated
+    let synopsisShow = document.getElementById('synopsis')
+    synopsisShow.innerHTML = detailData.synopsis
+}
+function showDetailFlex(dataD) {
+    hideAll()
+    // pDetei.style.display = 'flex'
+    detailShow(dataD)
+}
+
 // function onLoad(){
 //     hideAll()
 // }
@@ -233,6 +248,8 @@ function addMovieLike(movieLink){
 var pHome = document.getElementById('pageHome')
 var pSearch = document.getElementById('pageSearch')
 var pLike = document.getElementById('pageLike')
+var pDetei = document.getElementById('deteilShow')
+
 
 function hideAll(){
     const pageHome = document.getElementById('pageHome')
@@ -241,6 +258,8 @@ function hideAll(){
     pageSearch.innerHTML=''
     const pageLike = document.getElementById('pageLike')
     pageLike.innerHTML=''
+    const pageDetei = document.getElementById('deteilShow')
+    pageDetei.innerHTML=''
 }
 
 document.getElementById('home').addEventListener('click',(event) => {
