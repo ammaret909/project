@@ -217,6 +217,7 @@ function addMovieLike(movieLink){
     }
 }
 
+//deteils
 function detailShow(detailData) {
     console.log(detailData)
     let image_urlShow = document.getElementById('image_url')
@@ -243,6 +244,7 @@ function showDetailFlex(dataD) {
     detailShow(dataD)
 }
 
+//Delete
 function deleteMovieLike(id) {
     fetch(`https://se104-project-backend.du.r.appspot.com/movie?id=333&&movieId=${id}`, {
         method: 'DELETE'
@@ -261,6 +263,7 @@ function deleteMovieLike(id) {
     })
 }
 
+//hide and show
 function onLoad(){
     hideAll()
 }
@@ -275,18 +278,12 @@ function showBar(){
     pBar.style.display = 'flex'
 }
 
-
 function hideAll(){
     const pageHome = document.getElementById('pageHome')
     pageHome.innerHTML=''
-    // pHome.style.display = 'none'
-    
-    // const pageSearch = document.getElementById('pageSearch')
-    // pageSearch.innerHTML=''
+
     pSearch.style.display = 'none'
 
-    // const pageLike = document.getElementById('pageLike')
-    // pageLike.innerHTML=''
     pLike.style.display = 'none'
     pDetei.style.display = 'none'
     pBar.style.display = 'none'
