@@ -22,7 +22,6 @@ function addPageHome(movies){
     image.classList.add('h-auto')
     image.classList.add('w-auto')
     
-
     div.appendChild(div2)
     div2.classList.add('d-flex')
     div2.classList.add('justify-content-center')
@@ -36,7 +35,6 @@ function addPageHome(movies){
             hideAll()
             pLike.style.display = 'flex'
             addToData(movies)
-            showAllMoviesLike()
         }
     })
 }
@@ -147,13 +145,13 @@ function addPageLike(moviesLike){
     button1.setAttribute('type','submit')
     button1.setAttribute('id','delete')
     button1.innerText='Delete'
-    // button1.addEventListener('click', function (e) {
-    //     e.stopPropagation()
-    //     let text = `Delete ${moviesLike.id}`;
-    //     if (confirm(text)) {
-    //         deleteMovieLike(student.id)
-    //     }
-    // })
+    button1.addEventListener('click', function (e) {
+        e.stopPropagation()
+        let text = `Delete ${moviesLike.title}`;
+        if (confirm(text)) {
+            deleteMovieLike(moviesLike.id)
+        }
+    })
 
     div.appendChild(divName)
     divName.classList.add('d-flex')
@@ -180,6 +178,7 @@ function likeMovie(movieData){
             }
         }).then(data => {
             console.log('success', data)
+            showAllMoviesLike()
         }).catch(error => {
             return null
         })
@@ -242,6 +241,24 @@ function showDetailFlex(dataD) {
     hideAll()
     pDetei.style.display = 'flex'
     detailShow(dataD)
+}
+
+function deleteMovieLike(id) {
+    fetch(`https://se104-project-backend.du.r.appspot.com/movie?id=333&&movieId=${id}`, {
+        method: 'DELETE'
+    }
+    ).then(respond => {
+        if (respond.status === 200) {
+            return respond.json()
+        } else {
+            throw Error(respond.statusText)
+        }
+    }).then(data => {
+        alert(`Movie ${data.title} is now deleted`)
+        showAllMoviesLike()
+    }).catch(error => {
+        alert('failed')
+    })
 }
 
 function onLoad(){
