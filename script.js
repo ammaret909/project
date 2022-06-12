@@ -33,9 +33,9 @@ function addPageHome(movies){
     div1.addEventListener('dblclick',function() {
         let cf = confirm(`ต้องการถูกใจ ${movies.title} หรือไม่`)
         if(cf){
-            addToData(movies)
             hideAll()
             pLike.style.display = 'flex'
+            addToData(movies)
             showAllMoviesLike()
         }
     })
@@ -221,7 +221,7 @@ function addMovieLike(movieLink){
 function detailShow(detailData) {
     console.log(detailData)
     let image_urlShow = document.getElementById('image_url')
-    image_urlShow.setAttribute('src', detailData.images_url)
+    image_urlShow.setAttribute('src', detailData.image_url)
     let titleShow = document.getElementById('title')
     titleShow.innerText = detailData.title
     let scoreShow = document.getElementById('score')
@@ -253,10 +253,10 @@ var pSearch = document.getElementById('pageSearch')
 var pLike = document.getElementById('pageLike')
 var pDetei = document.getElementById('deteilShow')
 
-// var pBar = document.getElementById('carouselExampleCaptions')
-// function hideBar(){
-
-// }
+var pBar = document.getElementById('carouselExampleCaptions')
+function showBar(){
+    pBar.style.display = 'flex'
+}
 
 
 function hideAll(){
@@ -272,10 +272,12 @@ function hideAll(){
     // pageLike.innerHTML=''
     pLike.style.display = 'none'
     pDetei.style.display = 'none'
+    pBar.style.display = 'none'
 }
 
 document.getElementById('home').addEventListener('click',(event) => {
     hideAll()
+    showBar()
     showAllMovies()
 })
 
@@ -293,6 +295,7 @@ document.getElementById('like').addEventListener('click',(event) => {
 })
 
 window.addEventListener('load',function(){
+    showBar()
     showAllMovies()
 })
 
