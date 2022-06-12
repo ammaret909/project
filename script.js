@@ -146,13 +146,13 @@ function addPageLike(moviesLike){
     button1.setAttribute('type','submit')
     button1.setAttribute('id','delete')
     button1.innerText='Delete'
-    button1.addEventListener('click', function (e) {
-        e.stopPropagation()
-        let text = `Delete ${moviesLike.id}`;
-        if (confirm(text)) {
-            deleteMovieLike(student.id)
-        }
-    })
+    // button1.addEventListener('click', function (e) {
+    //     e.stopPropagation()
+    //     let text = `Delete ${moviesLike.id}`;
+    //     if (confirm(text)) {
+    //         deleteMovieLike(student.id)
+    //     }
+    // })
 
     div.appendChild(divName)
     divName.classList.add('d-flex')
@@ -191,7 +191,6 @@ function addToData(movies){
         'image_url' : movies.images.jpg.image_url,
         'url' : movies.url,
         'title' : movies.title,
-        'status' : movies.status,
         'rated' : movies.rating,
         'type' : movies.type,
         'episodes' : movies.episodes,
@@ -223,13 +222,11 @@ function detailShow(detailData) {
     let image_urlShow = document.getElementById('image_url')
     image_urlShow.setAttribute('src', detailData.images_url)
     let titleShow = document.getElementById('title')
-    titleShow.innerHTML = detailData.title
+    titleShow.innerText = detailData.title
     let scoreShow = document.getElementById('score')
     scoreShow.innerHTML = detailData.score
     let episodesShow = document.getElementById('episodes')
     episodesShow.innerHTML = detailData.episodes
-    let statusShow = document.getElementById('status')
-    statusShow.innerHTML = detailData.status
     let ratedShow = document.getElementById('rated')
     ratedShow.innerHTML = detailData.rated
     let synopsisShow = document.getElementById('synopsis')
@@ -237,7 +234,7 @@ function detailShow(detailData) {
 }
 function showDetailFlex(dataD) {
     hideAll()
-    // pDetei.style.display = 'flex'
+    pDetei.style.display = 'flex'
     detailShow(dataD)
 }
 
@@ -258,8 +255,9 @@ function hideAll(){
     pageSearch.innerHTML=''
     const pageLike = document.getElementById('pageLike')
     pageLike.innerHTML=''
-    const pageDetei = document.getElementById('deteilShow')
-    pageDetei.innerHTML=''
+    pDetei.style.display = 'none'
+    // const pageDetei = document.getElementById('deteilShow')
+    // pageDetei.innerHTML=''
 }
 
 document.getElementById('home').addEventListener('click',(event) => {
