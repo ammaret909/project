@@ -35,6 +35,7 @@ function addPageHome(movies){
         if(cf){
             addToData(movies)
             hideAll()
+            pLike.style.display = 'flex'
             showAllMoviesLike()
         }
     })
@@ -231,6 +232,11 @@ function detailShow(detailData) {
     ratedShow.innerHTML = detailData.rated
     let synopsisShow = document.getElementById('synopsis')
     synopsisShow.innerHTML = detailData.synopsis
+    document.getElementById('back').addEventListener('click',(event) => {
+        hideAll()
+        pLike.style.display = 'flex'
+        showAllMoviesLike()
+    })
 }
 function showDetailFlex(dataD) {
     hideAll()
@@ -238,26 +244,34 @@ function showDetailFlex(dataD) {
     detailShow(dataD)
 }
 
-// function onLoad(){
-//     hideAll()
-// }
+function onLoad(){
+    hideAll()
+}
 
 var pHome = document.getElementById('pageHome')
 var pSearch = document.getElementById('pageSearch')
 var pLike = document.getElementById('pageLike')
 var pDetei = document.getElementById('deteilShow')
 
+// var pBar = document.getElementById('carouselExampleCaptions')
+// function hideBar(){
+
+// }
+
 
 function hideAll(){
     const pageHome = document.getElementById('pageHome')
     pageHome.innerHTML=''
-    const pageSearch = document.getElementById('pageSearch')
-    pageSearch.innerHTML=''
-    const pageLike = document.getElementById('pageLike')
-    pageLike.innerHTML=''
+    // pHome.style.display = 'none'
+    
+    // const pageSearch = document.getElementById('pageSearch')
+    // pageSearch.innerHTML=''
+    pSearch.style.display = 'none'
+
+    // const pageLike = document.getElementById('pageLike')
+    // pageLike.innerHTML=''
+    pLike.style.display = 'none'
     pDetei.style.display = 'none'
-    // const pageDetei = document.getElementById('deteilShow')
-    // pageDetei.innerHTML=''
 }
 
 document.getElementById('home').addEventListener('click',(event) => {
@@ -268,11 +282,13 @@ document.getElementById('home').addEventListener('click',(event) => {
 document.getElementById('searchButton').addEventListener('click',(event) => {
     hideAll()
     let input = document.getElementById('searchBar').value
+    pSearch.style.display = 'flex'
     searchAnime(input)
 })
 
 document.getElementById('like').addEventListener('click',(event) => {
     hideAll()
+    pLike.style.display = 'flex'
     showAllMoviesLike()
 })
 
