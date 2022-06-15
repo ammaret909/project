@@ -145,7 +145,6 @@ function addPageLike(moviesLike){
     divDelete.appendChild(button1)
     button1.classList.add('btn')
     button1.classList.add('bg-oreng')
-    // button1.classList.add('text-back')
     button1.classList.add('text-white')
     button1.setAttribute('type','submit')
     button1.setAttribute('id','delete')
@@ -264,6 +263,7 @@ function deleteMovieLike(id) {
     }).then(data => {
         alert(`Movie ${data.title} is now deleted`)
         showAllMoviesLike()
+        showAllMovies()
     }).catch(error => {
         alert('failed')
     })
