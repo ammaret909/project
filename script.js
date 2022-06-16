@@ -270,8 +270,6 @@ function deleteMovieLike(id) {
     }).then(data => {
         alert(`Movie ${data.title} is now deleted`)
         showAllMoviesLike()
-        hideAll()
-        showAllMovies()
     }).catch(error => {
         alert('failed')
     })
