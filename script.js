@@ -83,10 +83,11 @@ function addPageLike(moviesLike){
     let div = document.createElement('div')
     let divImg = document.createElement('div')
     let divName = document.createElement('div')
-    let div3 = document.createElement('div')
+    let div2 = document.createElement('div')
     let divIcon = document.createElement('div')
     let divDetails = document.createElement('div')
     let divDelete = document.createElement('div')
+    let divScore = document.createElement('div')
     let image = document.createElement('img')
 
     let button = document.createElement('button')
@@ -103,18 +104,24 @@ function addPageLike(moviesLike){
     divImg.classList.add('d-flex')
     divImg.classList.add('justify-content-center')
     divImg.classList.add('m-3')
-
     divImg.appendChild(image)
     image.setAttribute('src',`${moviesLike.image_url}`)
     image.classList.add('h-auto')
     image.classList.add('w-auto')
-    
-    div.appendChild(div3)
-    div3.classList.add('d-flex')
-    div3.classList.add('justify-content-center')
-    div3.classList.add('col-12')
 
-    div3.appendChild(divIcon)
+    div.appendChild(divScore)
+    divScore.classList.add('d-flex')
+    divScore.classList.add('justify-content-center')
+    divScore.classList.add('m-3')
+    divScore.classList.add('text-oreng')
+    divScore.innerHTML=`Score ${moviesLike.score} / 10`
+    
+    div.appendChild(div2)
+    div2.classList.add('d-flex')
+    div2.classList.add('justify-content-center')
+    div2.classList.add('col-12')
+
+    div2.appendChild(divIcon)
     divIcon.classList.add('bi')
     divIcon.classList.add('bi-heart-fill')
     divIcon.classList.add('d-flex')
@@ -123,7 +130,7 @@ function addPageLike(moviesLike){
     divIcon.classList.add('col-3')
     divIcon.classList.add('text-white')
 
-    div3.appendChild(divDetails)
+    div2.appendChild(divDetails)
     divDetails.classList.add('col-3')
     divDetails.classList.add('d-flex')
     divDetails.classList.add('justify-content-center')
@@ -138,7 +145,7 @@ function addPageLike(moviesLike){
         showDetailFlex(moviesLike)
     })
 
-    div3.appendChild(divDelete)
+    div2.appendChild(divDelete)
     divDelete.classList.add('col-3')
     divDelete.classList.add('d-flex')
     divDelete.classList.add('justify-content-center')
